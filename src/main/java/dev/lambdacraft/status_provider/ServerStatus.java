@@ -59,9 +59,9 @@ public class ServerStatus extends NanoHTTPD {
             PlayerStatus pl = new PlayerStatus();
             pl.Name = p.getName().getString();
             pl.UUID = p.getUuid().toString();
-            pl.X = p.x;
-            pl.Y = p.y;
-            pl.Z = p.z;
+            pl.X = p.getX();
+            pl.Y = p.getY();
+            pl.Z = p.getZ();
             pl.Dimension = p.dimension.toString();
             pl.Health = p.getHealth();
             pl.IsBot = false;
