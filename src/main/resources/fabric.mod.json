@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "status_provider",
+  "version": "1.0.0",
+
+  "name": "Status Provider",
+  "description": "Provide status of server through a REST API",
+  "authors": [
+    "vkorn",
+    "unsupervisednn"
+  ],
+  "contact": {
+    "homepage": "https://lambdacraft.dev",
+    "sources": "https://github.com/Lambdacraft/fabric-status-provider"
+  },
+
+  "license": "MIT",
+  "icon": "assets/status_provider/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.lambdacraft.status_provider.StatusMain"
+    ]
+  },
+  "mixins": [
+    "status_provider.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.2",
+    "fabric": "*",
+    "minecraft": "1.14.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
