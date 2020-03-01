@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "status_provider",
-  "version": "1.0.0",
+  "version": "1.0.1",
 
   "name": "Status Provider",
   "description": "Provide status of server through a REST API",

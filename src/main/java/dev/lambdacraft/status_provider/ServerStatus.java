@@ -82,6 +82,8 @@ public class ServerStatus extends NanoHTTPD {
 
         r.StartTime = server.getServerStartTime();
 
-        return newFixedLengthResponse(Response.Status.OK, MIME_JSON, new Gson().toJson(r));
+        Response res = newFixedLengthResponse(Response.Status.OK, MIME_JSON, new Gson().toJson(r));
+        res.addHeader("Access-Control-Allow-Origin", "*");
+        return res;
     }
 }
