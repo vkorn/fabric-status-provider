@@ -64,14 +64,7 @@ public class ServerStatus extends NanoHTTPD {
             pl.Z = p.z;
             pl.Dimension = p.dimension.toString();
             pl.Health = p.getHealth();
-            pl.IsBot = false;
-
-            try {
-                pl.IsBot = Class.forName("carpet.patches.EntityPlayerMPFake").isInstance(
-                    server.getPlayerManager().getPlayer(p.getName().getString()).getClass()
-                );
-            } catch(ClassNotFoundException e) {
-            }
+            pl.IsBot = pl.Name.startsWith("[BOT] ");
 
             players.add(pl);
         }
