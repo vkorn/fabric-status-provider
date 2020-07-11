@@ -1,6 +1,5 @@
 package dev.lambdacraft.status_provider;
 
-// import ;
 import com.google.gson.Gson;
 import fi.iki.elonen.NanoHTTPD;
 import net.minecraft.server.MinecraftServer;
@@ -14,6 +13,9 @@ public class ServerStatus extends NanoHTTPD {
 
     public static final String MIME_JSON = "application/json";
     public static final String KEY_HEADER = "x-fabric-server-status";
+
+    private static final String CarpetMPPatchName = "carpet.patches.EntityPlayerMPFake";
+    private static final String LambdaBotNamePrefix = "[BOT] ";
 
     class PlayerStatus {
         public String Name;
@@ -64,13 +66,10 @@ public class ServerStatus extends NanoHTTPD {
             pl.Z = p.getZ();
             pl.Dimension = p.dimension.toString();
             pl.Health = p.getHealth();
-            pl.IsBot = false;
+            pl.IsBot = p.getClass().getName().equals(CarpetMPPatchName);
 
-            try {
-                pl.IsBot = Class.forName("carpet.patches.EntityPlayerMPFake").isInstance(
-                    server.getPlayerManager().getPlayer(p.getName().getString()).getClass()
-                );
-            } catch(ClassNotFoundException e) {
+            if (pl.IsBot && pl.Name.startsWith(LambdaBotNamePrefix)) {
+                pl.Name = pl.Name.substring(LambdaBotNamePrefix.length());
             }
 
             players.add(pl);
