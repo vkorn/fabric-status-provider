@@ -144,9 +144,10 @@ public class ServerStatus extends NanoHTTPD {
         if (text instanceof TranslatableText) {
             if (((TranslatableText) text).getKey().equals("chat.type.text") ||
                     ((TranslatableText) text).getKey().startsWith("death")) {
-                if (!text.getString().startsWith("[Disc")) {
+                String msg = text.getString();
+                if (!msg.startsWith("[Disc")) {
                     queueLock.lock();
-                    messages.add(text.getString());
+                    messages.add(msg);
                     queueLock.unlock();
                 }
             }
