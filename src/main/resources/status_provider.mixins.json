@@ -1,8 +1,9 @@
 {
   "required": true,
-  "package": "net.fabricmc.example.mixin",
+  "package": "dev.lambdacraft.status_provider.Mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinMinecraftServer"
   ],
   "client": [
   ],
