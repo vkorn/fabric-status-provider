@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.server.ServerStartCallback;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class StatusMain implements ModInitializer {
@@ -55,7 +55,7 @@ public class StatusMain implements ModInitializer {
         // Proceed with mild caution.
         loadProps();
 
-        ServerStartCallback.EVENT.register(server -> {
+        ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             int port;
             try {
                 port = Integer.parseInt(StatusMain.props.getProperty("port"));
